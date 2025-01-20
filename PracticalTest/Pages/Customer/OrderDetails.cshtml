@@ -1,0 +1,26 @@
+﻿@page
+@model PracticalTest.Pages.Customer.OrderDetailsModel
+<h3>Order Details</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item Name</th>
+            <th>Quantity</th>
+            <th>Item Amount</th>
+            <th>Discount</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detail in Model.OrderDetails)
+        {
+            <tr>
+                <td>@detail.ItemName</td>
+                <td>@detail.Qty</td>
+                <td>@detail.ItemAmount</td>
+                <td>@detail.DiscountAmount</td>
+                <td>@detail.FinalAmount</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,23 @@
+﻿@page
+@model PracticalTest.Pages.Customer.PlaceOrderModel
+<h2>Place Order</h2>
+<form method="post">
+    <div>
+    <label>Item Name:</label>
+        <input type="text" asp-for="OrderDetail.ItemName" required />
+    </div>
+    <div>
+    <label>Quantity:</label>
+        <input type="number" asp-for="OrderDetail.Qty" required />
+    </div>
+    <div>
+    <label>Item Amount:</label>
+        <input type="number" asp-for="OrderDetail.ItemAmount" required />
+    </div>
+    <div>
+    <label>Discount:</label>
+    <input type="number" asp-for="OrderDetail.DiscountAmount" required />
+    </div>
+    <br />
+    <button type="submit">Place Order</button>
+</form>

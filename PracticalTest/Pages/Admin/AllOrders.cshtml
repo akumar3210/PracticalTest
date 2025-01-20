@@ -1,0 +1,68 @@
+﻿@page
+@model PracticalTest.Pages.Admin.AllOrdersModel
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Order Total</th>
+            <th>Order By</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model.Orders)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.OrderDate.ToShortDateString()</td>
+                <td>@order.OrderTotal</td>
+                <td>@order.OrderBy</td>
+                <td>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#orderDetailsModal_@order.OrderId">
+                        View Details
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@foreach (var order in Model.Orders)
+{
+    <div class="modal fade" id="orderDetailsModal_@order.OrderId" tabindex="-1" aria-labelledby="orderDetailsLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderDetailsLabel">Order Details for @order.OrderId</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th>Quantity</th>
+                                <th>Item Amount</th>
+                                <th>Discount</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var detail in @Model.Orders.First(o => o.OrderId == order.OrderId).OrderDetails)
+                            {
+                                <tr>
+                                    <td>@detail.ItemName</td>
+                                    <td>@detail.Qty</td>
+                                    <td>@detail.ItemAmount</td>
+                                    <td>@detail.DiscountAmount</td>
+                                    <td>@detail.FinalAmount</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}

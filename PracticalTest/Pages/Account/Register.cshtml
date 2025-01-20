@@ -1,0 +1,14 @@
+﻿@page
+@model PracticalTest.Pages.Account.RegisterModel
+
+<form method="post">
+    <input type="text" asp-for="User.FirstName" placeholder="First Name" required />
+    <input type="text" asp-for="User.LastName" placeholder="Last Name" required />
+    <input type="email" asp-for="User.Email" placeholder="Email" required />
+    <input type="password" asp-for="User.Password" placeholder="Password" required />
+    <select asp-for="User.Role">
+        <option value="Customer">Customer</option>
+        <option value="Admin">Admin</option>
+    </select>
+    <button type="submit">Register</button>
+</form>
